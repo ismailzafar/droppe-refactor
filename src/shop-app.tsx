@@ -34,20 +34,12 @@ export class ShopApp extends React.Component<
      * This function will fetch products from API
      */
    async getProducts(){
-       fetch('https://fakestoreapi.com/products').then((response) => {
-           let jsonResponse = response.json();
-
-           jsonResponse.then((rawData) => {
-               let data = [];
-
-               for (let i = 0; i < rawData.length; i++) {
-                   let updatedProd = rawData[i];
-                   data.push(updatedProd);
-               }
+       //This API url should be stored in env instead of hard code.
+       let apiUrl = 'https://fakestoreapi.com/products';
+       fetch(apiUrl).then((response) => {
+           response.json().then((data) => {
                this.setState({
                    products: data,
-               });
-               this.setState({
                    prodCount: data.length
                })
            });
