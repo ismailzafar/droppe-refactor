@@ -113,6 +113,17 @@ export class ShopApp extends React.Component<
           })
       },time)
   }
+
+    /**
+     * This function is for showing message by taking message param.
+     * @param message
+     */
+  setMessage(message:string ="" ){
+      this.setState({
+          isShowingMessage: Boolean(message.length),
+          message: message
+      })
+  }
   render() {
     const { products, isOpen } = this.state;
     return (
