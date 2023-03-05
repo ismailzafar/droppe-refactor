@@ -46,18 +46,17 @@ export class ShopApp extends React.Component<
       document.title = "Droppe refactor app"
    }
 
-  favClick(title: string) {
+  favClick(title: string, index: number) {
     const prods = this.state.products;
-    const idx = lodash.findIndex(prods, {title: title})
     let currentFavs = this.state.numFavorites
     let totalFavs: any;
 
-    if (prods[idx].isFavorite) {
-      prods[idx].isFavorite = false;
+    if (prods[index].isFavorite) {
+      prods[index].isFavorite = false;
       totalFavs = --currentFavs
     } else {
       totalFavs = ++currentFavs
-      prods[idx].isFavorite = true;
+      prods[index].isFavorite = true;
     }
 
     this.setState(() => ({ products: prods, numFavorites: totalFavs }));
