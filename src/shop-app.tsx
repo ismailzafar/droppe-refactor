@@ -33,7 +33,7 @@ export class ShopApp extends React.Component<
     /**
      * This function will fetch products from API
      */
-   async getProducts(){
+    getProducts(){
        //This API url should be stored in env instead of hard code.
        let apiUrl = 'https://fakestoreapi.com/products';
        fetch(apiUrl).then((response) => {
