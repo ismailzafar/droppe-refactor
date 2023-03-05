@@ -14,6 +14,8 @@ export class ShopApp extends React.Component<
   {},
   { products: any[]; isOpen: boolean; isShowingMessage: boolean; message: string; numFavorites: number; prodCount: number }
 > {
+    //API url should be stored in env to handle local, dev, staging and live environment.
+    readonly apiUrl: string = 'https://fakestoreapi.com/products';
   constructor(props: any) {
     super(props);
 
@@ -34,8 +36,8 @@ export class ShopApp extends React.Component<
      * This function will fetch products from API
      */
     getProducts(){
-       //This API url should be stored in env instead of hard code.
-       let apiUrl = 'https://fakestoreapi.com/products';
+       //This API url should be stored in env
+       let apiUrl = this.apiUrl;
        fetch(apiUrl).then((response) => {
            response.json().then((data) => {
                this.setState({
