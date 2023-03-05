@@ -22,28 +22,36 @@ export class ShopApp extends React.Component<
 
     this.state = { products: [], isOpen: false, isShowingMessage: false, message: '', numFavorites: 0, prodCount: 0 };
 
-    fetch('https://fakestoreapi.com/products').then((response) => {
-      let jsonResponse = response.json();
-
-      jsonResponse.then((rawData) => {
-        let data = [];
-
-        for (let i = 0; i < rawData.length; i++) {
-          let updatedProd = rawData[i];
-          data.push(updatedProd);
-        }
-        this.setState({
-          products: data,
-        });
-        this.setState({
-          prodCount: data.length
-        })
-      });
-    });
   }
 
    componentDidMount(){
+      //It will fetch and add products. We don't need to catch this promise
+      this.getProducts();
       document.title = "Droppe refactor app"
+   }
+
+    /**
+     * This function will fetch products from API
+     */
+   async getProducts(){
+       fetch('https://fakestoreapi.com/products').then((response) => {
+           let jsonResponse = response.json();
+
+           jsonResponse.then((rawData) => {
+               let data = [];
+
+               for (let i = 0; i < rawData.length; i++) {
+                   let updatedProd = rawData[i];
+                   data.push(updatedProd);
+               }
+               this.setState({
+                   products: data,
+               });
+               this.setState({
+                   prodCount: data.length
+               })
+           });
+       });
    }
 
   favClick( index: number) {
@@ -55,8 +63,8 @@ export class ShopApp extends React.Component<
         products[index].isFavorite = false;
         numFavorites --;
     } else {
-    products[index].isFavorite = true;
-    numFavorites++;
+        products[index].isFavorite = true;
+        numFavorites++;
     }
 
     this.setState(() => ({ products, numFavorites }));
