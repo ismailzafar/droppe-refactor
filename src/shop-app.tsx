@@ -62,36 +62,29 @@ export class ShopApp extends React.Component<
   }
 
   onSubmit(payload: { title: string; description: string, price: string }) {
-    const updated = lodash.clone(this.state.products);
-    updated.push({
-      title: payload.title,
-      description: payload.description,
-      price: payload.price
-    });
-
-    this.setState({
-      products: updated,
-      prodCount: lodash.size(this.state.products) + 1
-    });
-
+    let {title,description,price}=payload;
+    const products = this.state.products;
+    let product={title,description,price}
     this.closeModal();
     this.setMessage('Adding product...')
+    //This API url should be stored in env
+    let apiUrl = this.apiUrl;
 
     // **this POST request doesn't actually post anything to any database**
-    fetch('https://fakestoreapi.com/products',{
+    fetch(apiUrl,{
             method:"POST",
-            body:JSON.stringify(
-                {
-                    title: payload.title,
-                    price: payload.price,
-                    description: payload.description,
-                }
-            )
+            body:JSON.stringify(product)
         })
             .then(res=>res.json())
             .then(json => {
+                //:todo First we need to validate the data is stored by checking json response before adding actual data into dom.
+                products.push(product);
+                this.setState({
+                    products: products,
+                    prodCount: products.length
+                });
                 this.hideMessage();
-            })
+            }).catch(e=>{this.setMessage("Unable to save the product.")})
   }
 
     /**
