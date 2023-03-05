@@ -97,17 +97,22 @@ export class ShopApp extends React.Component<
         })
             .then(res=>res.json())
             .then(json => {
-               (function (t) {
-                 setTimeout(()=>{
-                    t.setState({
-                       isShowingMessage: false,
-                       message: ''
-                    })
-                 }, 2000)
-              })(this);
+                this.hideMessage();
             })
   }
 
+    /**
+     * Hide message after a certain time
+     * @param time
+     */
+  hideMessage(time:number=2000){
+      setTimeout(()=>{
+          this.setState({
+              isShowingMessage: false,
+              message: ''
+          })
+      },time)
+  }
   render() {
     const { products, isOpen } = this.state;
     return (
