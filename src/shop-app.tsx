@@ -79,10 +79,8 @@ export class ShopApp extends React.Component<
       isOpen: false,
     });
 
-    this.setState({
-      isShowingMessage: true,
-      message: 'Adding product...'
-    })
+
+    this.setMessage('Adding product...')
 
     // **this POST request doesn't actually post anything to any database**
     fetch('https://fakestoreapi.com/products',{
@@ -124,6 +122,26 @@ export class ShopApp extends React.Component<
           message: message
       })
   }
+
+    /**
+     * It will open Modal
+     */
+  openModal(){
+    this.setState({
+        isOpen: true,
+    });
+
+    }
+
+    /**
+     * It will close Modal
+     */
+  closeModal(){
+    this.setState({
+        isOpen: false,
+    });
+
+    }
   render() {
     const { products, isOpen } = this.state;
     return (
