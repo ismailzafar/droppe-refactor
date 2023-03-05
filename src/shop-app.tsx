@@ -43,6 +43,11 @@ export class ShopApp extends React.Component<
                    prodCount: data.length
                })
            });
+       }).catch(e=>{
+           this.setState({
+               message:"Product API connectivity issue .....",
+               isShowingMessage: true,
+           })
        });
    }
 
