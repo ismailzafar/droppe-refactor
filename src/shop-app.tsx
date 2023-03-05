@@ -21,6 +21,8 @@ export class ShopApp extends React.Component<
 
     this.favClick = this.favClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
 
     this.state = { products: [], isOpen: false, isShowingMessage: false, message: '', numFavorites: 0, prodCount: 0 };
 
@@ -75,11 +77,7 @@ export class ShopApp extends React.Component<
       prodCount: lodash.size(this.state.products) + 1
     });
 
-    this.setState({
-      isOpen: false,
-    });
-
-
+    this.closeModal();
     this.setMessage('Adding product...')
 
     // **this POST request doesn't actually post anything to any database**
@@ -166,11 +164,7 @@ export class ShopApp extends React.Component<
           <div className={styles.buttonWrapper}>
             <span role="button">
                <Button
-                  onClick={function (this: any) {
-                     this.setState({
-                        isOpen: true,
-                     });
-                  }.bind(this)}
+                  onClick={this.openModal}
                >Send product proposal</Button>
             </span>
              {this.state.isShowingMessage && <div className={styles.messageContainer}>
@@ -196,11 +190,7 @@ export class ShopApp extends React.Component<
               <div className={styles.modalContentHelper}>
                  <div
                     className={styles.modalClose}
-                    onClick={function (this: any) {
-                       this.setState({
-                          isOpen: false,
-                       });
-                    }.bind(this)}
+                    onClick={this.closeModal}
                  ><FaTimes /></div>
 
                  <Form
