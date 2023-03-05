@@ -54,19 +54,12 @@ export class ShopApp extends React.Component<
    }
 
   favClick( index: number) {
-    const {products} = this.state;
-    let {numFavorites} = this.state;
+    let {numFavorites, products} = this.state;
     let product =  products[index];
+      product.isFavorite=!product.isFavorite;
+      product.isFavorite?numFavorites++:numFavorites--;
 
-    if (product.isFavorite) {
-        products[index].isFavorite = false;
-        numFavorites --;
-    } else {
-        products[index].isFavorite = true;
-        numFavorites++;
-    }
-
-    this.setState(() => ({ products, numFavorites }));
+    this.setState({ products, numFavorites });
   }
 
   onSubmit(payload: { title: string; description: string, price: string }) {
