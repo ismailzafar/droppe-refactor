@@ -46,7 +46,7 @@ export class ShopApp extends React.Component<
       document.title = "Droppe refactor app"
    }
 
-  favClick(title: string, index: number) {
+  favClick( index: number) {
     const prods = this.state.products;
     let currentFavs = this.state.numFavorites
     let totalFavs: any;
