@@ -132,7 +132,8 @@ export class ShopApp extends React.Component<
     return (
       <>
         <Header />
-
+        //:todo body should be move to a separate component for scalability, readability and usability
+        //:todo Move product click and all other logic to the body component
         <div className={['container', styles.main].join(' ')} style={{paddingTop: 0}}>
           <div className={styles.buttonWrapper}>
             <span role="button">
