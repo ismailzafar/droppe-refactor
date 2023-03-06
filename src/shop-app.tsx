@@ -5,10 +5,8 @@ import { FaTimes } from "react-icons/fa";
 import { Button } from "./components/button";
 import ProductList from "./components/product-list-components";
 import { Form } from "./components/form";
-import logo from "./images/droppe-logo.png";
-import img1 from "./images/img1.png";
-import img2 from "./images/img2.png";
 import styles from "./shopApp.module.css";
+import {Header} from "./components/header";
 
 export class ShopApp extends React.Component<
   {},
@@ -134,21 +132,7 @@ export class ShopApp extends React.Component<
     const { products, isOpen } = this.state;
     return (
       <React.Fragment>
-        <div className={styles.header}>
-          <div className={['container', styles.headerImageWrapper].join(' ')}>
-            <img src={logo} className={styles.headerImage} alt="Droppe Logo"/>
-          </div>
-        </div>
-
-        <>
-           <span
-              className={['container', styles.main].join(' ')}
-              style={{margin: '50px inherit', display: 'flex', justifyContent: 'space-evenly'}}
-           >
-            <img src={img1} style={{maxHeight: "15em", display: 'block'}} alt="Packing Material"/>
-            <img src={img2} style={{maxHeight: "15rem", display: 'block'}} alt="Installing Equipment"/>
-           </span>
-        </>
+        <Header />
 
         <div className={['container', styles.main].join(' ')} style={{paddingTop: 0}}>
           <div className={styles.buttonWrapper}>
