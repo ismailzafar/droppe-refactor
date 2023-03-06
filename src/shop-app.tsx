@@ -130,7 +130,7 @@ export class ShopApp extends React.Component<
   render() {
     const { products, isOpen } = this.state;
     return (
-      <React.Fragment>
+      <>
         <Header />
 
         <div className={['container', styles.main].join(' ')} style={{paddingTop: 0}}>
@@ -172,7 +172,7 @@ export class ShopApp extends React.Component<
           </div>
        </Modal>
 
-      </React.Fragment>
+      </>
     );
   }
 }
