@@ -136,7 +136,7 @@ export class ShopApp extends React.Component<
       <React.Fragment>
         <div className={styles.header}>
           <div className={['container', styles.headerImageWrapper].join(' ')}>
-            <img src={logo} className={styles.headerImage} />
+            <img src={logo} className={styles.headerImage} alt="Droppe Logo"/>
           </div>
         </div>
 
@@ -145,8 +145,8 @@ export class ShopApp extends React.Component<
               className={['container', styles.main].join(' ')}
               style={{margin: '50px inherit', display: 'flex', justifyContent: 'space-evenly'}}
            >
-            <img src={img1} style={{maxHeight: "15em", display: 'block'}} />
-            <img src={img2} style={{maxHeight: "15rem", display: 'block'}} />
+            <img src={img1} style={{maxHeight: "15em", display: 'block'}} alt="Packing Material"/>
+            <img src={img2} style={{maxHeight: "15rem", display: 'block'}} alt="Installing Equipment"/>
            </span>
         </>
 
